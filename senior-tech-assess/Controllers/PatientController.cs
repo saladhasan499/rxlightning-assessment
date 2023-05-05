@@ -26,12 +26,14 @@ public class PatientController : ControllerBase
 
 
     [HttpGet("/patients")]
+    [Authorize(AuthenticationSchemes = HardcodedBearerDefaults.AuthenticationScheme)]
     public async Task<List<PatientModel>> GetPatientsAsync()
     {
         return await _patientService.GetPatientsAsync();
     }
 
-
+    [Authorize]
+    [Authorize(AuthenticationSchemes = HardcodedBearerDefaults.AuthenticationScheme)]
     [HttpGet("/patients/{id}")]
     public async Task<PatientModel> GetPatientsByIdAsync(string id)
     {

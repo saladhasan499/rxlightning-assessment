@@ -26,7 +26,11 @@ const PatientData = () => {
     const fetchData = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch('https://localhost:7083/patients');
+            const response = await fetch('https://localhost:7083/patients', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const data = await response.json();
             setPatients(data);
         } catch (error) {
@@ -37,7 +41,11 @@ const PatientData = () => {
     const fetchPatientById = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch(`https://localhost:7083/patients/${patientIdInput}`);
+            const response = await fetch(`https://localhost:7083/patients/${patientIdInput}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const data = await response.json();
             setPatients([data]);
         } catch (error) {

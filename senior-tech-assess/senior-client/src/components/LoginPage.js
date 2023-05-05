@@ -20,8 +20,8 @@ const LoginPage = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log('Token:', data.Token);
-                localStorage.setItem('token', data.Token);
+                console.log('Token:', data.token);
+                localStorage.setItem('token', data.token);
                 navigate('/home');
             } else {
                 setErrorMessage('Invalid email or password');
